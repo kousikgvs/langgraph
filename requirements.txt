@@ -9,3 +9,6 @@ ipykernel
 jupyter
 notebook
 ipywidgets
+
+pydantic
+typing-extensions
