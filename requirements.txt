@@ -1,0 +1,11 @@
+langchain
+langchain-core
+langchain-community
+langchain-text-splitters
+langchain-groq
+langsmith
+python-dotenv
+ipykernel
+jupyter
+notebook
+ipywidgets
