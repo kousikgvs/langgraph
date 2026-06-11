@@ -1,0 +1,41 @@
+# LangGraph definition loaded at runtime
+# Each node is an LLM call that reads `input_key` from state
+# and writes the LLM response to `output_key`.
+
+state:
+  topic: str
+  outline: str
+  draft: str
+  final: str
+
+nodes:
+  - name: outline
+    system_prompt: >-
+      You are an expert content planner. Given a topic, produce a concise
+      3-point outline as a numbered list. Keep it under 60 words.
+    input_key: topic
+    output_key: outline
+
+  - name: draft
+    system_prompt: >-
+      You are a technical writer. Given an outline, write a single short
+      paragraph (about 4 sentences) covering all points.
+    input_key: outline
+    output_key: draft
+
+  - name: edit
+    system_prompt: >-
+      You are an editor. Polish the given draft for clarity, grammar, and
+      flow. Return only the final polished paragraph.
+    input_key: draft
+    output_key: final
+
+edges:
+  - from: START
+    to: outline
+  - from: outline
+    to: draft
+  - from: draft
+    to: edit
+  - from: edit
+    to: END
