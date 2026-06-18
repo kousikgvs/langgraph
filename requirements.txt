@@ -15,3 +15,7 @@ streamlit
 
 pydantic
 typing-extensions
+
+psycopg[binary,pool]
+langgraph 
+langgraph-checkpoint-postgres
